@@ -1,12 +1,27 @@
 <script lang="ts">
-	export let name: string;
   import Counter from "./Counter.svelte";
+  import { onMount } from "svelte";
+  import Counter1 from "./counter";
+  import {counterItems} from './store'
+  onMount(()=>{
+	  addCounter()
+  })
+  function addCounter(title=""){
+    $counterItems=[...$counterItems,new Counter1(title)]
+  }
+  function sum(counters:Counter1[])
+  {
+    return Counter1.Sum(counters);
+  }
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-  <Counter />
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>Multiple Counter</h1>
+  {#each $counterItems as item,i}
+    <Counter counter={item} delete_function={()=>{$counterItems.splice(i,1);$counterItems=$counterItems}} update_function={()=>$counterItems=$counterItems}/>
+  {/each}
+  <div><button on:click={()=>addCounter()} >NewCounter</button></div>
+	<p>sum of count {sum($counterItems)}</p>
 </main>
 
 <style>
