@@ -15,3 +15,19 @@
    <button on:click={()=>{counter.ResetCount();update_function()}}>0</button>
    <button on:click={()=>{delete_function();update_function()}}>delete</button>
 </div>
+
+<style>
+  div{
+    background-color: lightblue;
+    margin:5px auto;
+    padding:8px;
+    width:fit-content;
+  }
+  span{
+    display:inline-block;
+    min-width: 50px;
+  }
+  button,input{
+    margin :0px;
+  }
+</style>
