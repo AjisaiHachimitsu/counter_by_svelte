@@ -1,9 +1,11 @@
 <script lang="ts">
 	export let name: string;
+  import Counter from "./Counter.svelte";
 </script>
 
 <main>
 	<h1>Hello {name}!</h1>
+  <Counter />
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 </main>
 
