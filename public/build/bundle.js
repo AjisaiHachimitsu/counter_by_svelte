@@ -756,7 +756,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (16:2) {#each $counterItems as item,i}
+    // (23:2) {#each $counterItems as item,i}
     function create_each_block(ctx) {
     	let counter;
     	let current;
@@ -808,7 +808,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(16:2) {#each $counterItems as item,i}",
+    		source: "(23:2) {#each $counterItems as item,i}",
     		ctx
     	});
 
@@ -827,6 +827,11 @@ var app = (function () {
     	let t5;
     	let t6_value = Counter1.Sum(/*$counterItems*/ ctx[0]) + "";
     	let t6;
+    	let t7;
+    	let br;
+    	let t8;
+    	let t9_value = titleList(/*$counterItems*/ ctx[0]) + "";
+    	let t9;
     	let current;
     	let mounted;
     	let dispose;
@@ -861,13 +866,18 @@ var app = (function () {
     			p = element("p");
     			t5 = text("sum of count ");
     			t6 = text(t6_value);
+    			t7 = space();
+    			br = element("br");
+    			t8 = text("\n    title list ");
+    			t9 = text(t9_value);
     			attr_dev(h1, "class", "svelte-1tky8bj");
-    			add_location(h1, file, 14, 1, 356);
-    			add_location(button, file, 18, 7, 591);
-    			add_location(div, file, 18, 2, 586);
-    			add_location(p, file, 19, 2, 656);
+    			add_location(h1, file, 21, 1, 531);
+    			add_location(button, file, 25, 7, 766);
+    			add_location(div, file, 25, 2, 761);
+    			add_location(br, file, 27, 47, 882);
+    			add_location(p, file, 26, 2, 831);
     			attr_dev(main, "class", "svelte-1tky8bj");
-    			add_location(main, file, 13, 0, 348);
+    			add_location(main, file, 20, 0, 523);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -888,6 +898,10 @@ var app = (function () {
     			append_dev(main, p);
     			append_dev(p, t5);
     			append_dev(p, t6);
+    			append_dev(p, t7);
+    			append_dev(p, br);
+    			append_dev(p, t8);
+    			append_dev(p, t9);
     			current = true;
 
     			if (!mounted) {
@@ -925,6 +939,7 @@ var app = (function () {
     			}
 
     			if ((!current || dirty & /*$counterItems*/ 1) && t6_value !== (t6_value = Counter1.Sum(/*$counterItems*/ ctx[0]) + "")) set_data_dev(t6, t6_value);
+    			if ((!current || dirty & /*$counterItems*/ 1) && t9_value !== (t9_value = titleList(/*$counterItems*/ ctx[0]) + "")) set_data_dev(t9, t9_value);
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -961,6 +976,16 @@ var app = (function () {
     	});
 
     	return block;
+    }
+
+    function titleList(counters, delimiter = ",") {
+    	let str = "";
+
+    	for (let item of counters) {
+    		str += item.title + delimiter;
+    	}
+
+    	return str.slice(0, -1);
     }
 
     function instance($$self, $$props, $$invalidate) {
@@ -1000,6 +1025,7 @@ var app = (function () {
     		writable,
     		counterItems,
     		addCounter,
+    		titleList,
     		$counterItems
     	});
 
