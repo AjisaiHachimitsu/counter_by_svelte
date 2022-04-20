@@ -1,35 +1,36 @@
-export default class Counter1{
-  title:string;
-  private count:number=0;
-  get Count (){return this.count;}
-  constructor(title :string="")
-  {
-    this.title=title;
+export default class Counter {
+  title: string;
+  private count: number = 0;
+  get Count() { return this.count; }
+  constructor(title: string = "") {
+    this.title = title;
   }
 
-  IncreaseCount()
-  {
+  IncreaseCount() {
     this.count++;
   }
-  DecreaseCount()
-  {
-    if(this.count>=1)
-    {
+  DecreaseCount() {
+    if (this.count >= 1) {
       this.count--;
     }
   }
-  ResetCount()
-  {
-    this.count=0;
+  ResetCount() {
+    this.count = 0;
   }
 
-  static Sum(counters:Readonly<Counter1>[])
-  {
-    let sum=0;
-    for(let i=0;i<counters.length;i++)
-    {
-      sum+=counters[i].Count;
+  static Sum(counters: Readonly<Counter>[]) {
+    let sum = 0;
+    for (let item of counters) {
+      sum += item.Count;
     }
     return sum;
+  }
+
+  static TitleList(counters:Counter[],delimiter=","){
+    let str=""
+	  for (let item of counters){
+		  str+=item.title+delimiter
+	  }
+    return str.slice(0,-1);
   }
 }
