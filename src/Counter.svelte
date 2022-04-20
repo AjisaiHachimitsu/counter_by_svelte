@@ -1,6 +1,5 @@
 <script lang='ts'>
   import Counter1 from "./counter";
-  //import { counterItems } from "./store";
   export let counter:Counter1;
   export let delete_function=()=>{};
   export let update_function=()=>{};
