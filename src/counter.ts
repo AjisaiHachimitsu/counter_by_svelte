@@ -1,7 +1,9 @@
 export default class Counter {
   title: string;
   private count: number = 0;
-  get Count() { return this.count; }
+  get Count() {
+    return this.count;
+  }
   constructor(title: string = "") {
     this.title = title;
   }
@@ -26,11 +28,11 @@ export default class Counter {
     return sum;
   }
 
-  static TitleList(counters:Counter[],delimiter=","){
-    let str=""
-	  for (let item of counters){
-		  str+=item.title+delimiter
-	  }
-    return str.slice(0,-1);
+  static TitleList(counters: Counter[], delimiter = ",") {
+    let str = "";
+    for (let item of counters) {
+      str += item.title + delimiter;
+    }
+    return str.slice(0, -1);
   }
 }
