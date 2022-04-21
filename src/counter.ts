@@ -31,8 +31,13 @@ export default class Counter {
   static TitleList(counters: Counter[], delimiter = ",") {
     let str = "";
     for (let item of counters) {
-      str += item.title + delimiter;
+      if (item.title!="") {
+        str += item.title + delimiter;
+      }
     }
-    return str.slice(0, -1);
+    if (str!="") {
+      str=str.slice(0,-1);
+    }
+    return str;
   }
 }
